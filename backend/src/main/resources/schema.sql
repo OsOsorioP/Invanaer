@@ -66,3 +66,17 @@ CREATE TABLE usuario_evento (
     CONSTRAINT fk_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     CONSTRAINT fk_evento_id FOREIGN KEY (evento_id) REFERENCES evento(id)
 );
+
+-- Crear tabla usuario_evento
+DROP TABLE IF EXISTS verificación_cuenta CASCADE;
+
+CREATE TABLE verificación_cuenta (
+    id SERIAL PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    evento_id INT NOT NULL,
+    dispositivo VARCHAR(100) DEFAULT NULL,
+    dirección_ip VARCHAR(100) DEFAULT NULL,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_usuario_id FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    CONSTRAINT fk_evento_id FOREIGN KEY (evento_id) REFERENCES evento(id)
+);
